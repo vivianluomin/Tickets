@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@color/mian_bule"
+        android:paddingBottom="5dp"
+        android:id="@+id/ll_head"
+        >
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/iv_head_bg"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_centerInParent="true"
+            android:layout_margin="30dp"
+            android:padding="20dp"
+            android:background="@color/half_transparent"
+            >
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:id="@+id/tv_weather"
+                android:src="@mipmap/ic_sun"
+                android:scaleType="centerCrop"
+                android:layout_marginLeft="20dp"
+                android:layout_gravity="center"
+                />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="15dp"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_time"
+                    android:textSize="24sp"
+                    android:text="18:19"
+                    android:textColor="@color/color_whiet"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_weather_data"
+                    android:textSize="18sp"
+                    android:textColor="@color/color_whiet"
+                    android:text="周六  阴天  7℃"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="@color/color_whiet"
+                    android:id="@+id/tv_earar"
+                    android:text="长安区  空气良好"
+                    />
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+
+        <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            >
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:scaleType="centerCrop"
+                android:id="@+id/iv_start"
+                android:layout_marginLeft="12dp"
+                android:src="@mipmap/ic_starts_large" />
+
+            <EditText
+                android:id="@+id/tv_start_station"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:hint="@string/start_station"
+                android:background="@null"
+                android:textColorHint="@color/text_hint"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="20dp"
+            android:id="@+id/iv_To"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:scaleType="centerCrop"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/ic_to" />
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            >
+        <EditText
+            android:id="@+id/tv_end_station"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:hint="@string/end_station"
+            android:background="@null"
+            android:textCursorDrawable="@null"
+            android:textColorHint="@color/text_hint"
+            android:textSize="14sp" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:id="@+id/iv_end"
+            android:scaleType="centerCrop"
+            android:layout_marginRight="12dp"
+            android:src="@mipmap/ic_starts_large" />
+        </LinearLayout>
+</RelativeLayout>
+
+        <View
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/mian_bule"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            />
+
+       <EditText
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:background="@null"
+           android:hint="@string/input_time"
+           android:textSize="14sp"
+           android:textColorHint="@color/text_hint"
+           android:textColor="@color/text_color"
+           android:layout_marginLeft="15dp"
+           android:layout_marginTop="20dp"
+           />
+
+        <View
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/mian_bule"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_train_search"
+                android:text="@string/search"
+                android:textSize="14sp"
+                android:padding="5dp"
+                android:gravity="center"
+                android:textColor="@color/text_color"
+                android:background="@drawable/bg_textview"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="15dp"
+                />
+
+
+         <CheckedTextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:id="@+id/ctv_check"
+             android:layout_alignParentEnd="true"
+             android:text="@string/student"
+             android:layout_marginTop="20dp"
+             android:layout_marginRight="15dp"
+             android:textSize="14sp"
+             android:gravity="center"
+             android:textColor="@color/text_color"
+             android:checkMark="?android:attr/listChoiceIndicatorSingle"
+             android:checkMarkTint="@color/mian_bule"
+             />
+
+        </RelativeLayout>
+
+
+
+    </LinearLayout>
+
+</LinearLayout>
