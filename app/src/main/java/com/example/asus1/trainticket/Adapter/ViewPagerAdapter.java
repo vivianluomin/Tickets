@@ -24,16 +24,9 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     private String[] mTitles;
     private Context mContext;
     private int[] mDraws;
-    public ViewPagerAdapter(FragmentManager fm, List<Fragment> fragments, String[] titles) {
+    public ViewPagerAdapter(FragmentManager fm, List<Fragment> fragments) {
         super(fm);
         mFragments = fragments;
-        mTitles = titles;
-
-        mDraws = new int[]{
-                R.mipmap.ic_tain_bule1,
-                R.mipmap.ic_move1,
-                R.mipmap.ic_happy1
-        };
 
     }
 
@@ -50,6 +43,6 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public CharSequence getPageTitle(int position) {
 
-        return mTitles[position];
+        return null;
     }
 }

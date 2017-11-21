@@ -45,7 +45,7 @@ public class MainActivity extends BaseActivity {
         mFragments.add(new MovieTicketFragment());
         mFragments.add(new HappyFragment());
         mViewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager()
-                ,mFragments,new String[]{getString(R.string.train),getString(R.string.move),getString(R.string.happy)});
+                ,mFragments);
         mViewPager.setAdapter(mViewPagerAdapter);
         mViewPager.setCurrentItem(0);
 
