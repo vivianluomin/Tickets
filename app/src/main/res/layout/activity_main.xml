@@ -24,15 +24,16 @@
 
         />
 
+
     <android.support.design.widget.TabLayout
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:id="@+id/tabLayout"
         app:tabMode="fixed"
         app:tabIndicatorHeight="0dp"
+        app:tabGravity="fill"
         app:tabTextColor="@color/text_color"
         app:tabSelectedTextColor="@color/mian_bule"
-        app:tabGravity="fill"
         >
 
         <android.support.design.widget.TabItem

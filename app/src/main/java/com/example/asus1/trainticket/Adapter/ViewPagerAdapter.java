@@ -1,10 +1,15 @@
 package com.example.asus1.trainticket.Adapter;
 
+import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
+import android.text.Spanned;
+
+import com.example.asus1.trainticket.R;
 
 import java.util.List;
 
@@ -15,10 +20,21 @@ import java.util.List;
 public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
 
-    List<Fragment> mFragments;
-    public ViewPagerAdapter(FragmentManager fm, List<Fragment> fragments) {
+    private  List<Fragment> mFragments;
+    private String[] mTitles;
+    private Context mContext;
+    private int[] mDraws;
+    public ViewPagerAdapter(FragmentManager fm, List<Fragment> fragments, String[] titles) {
         super(fm);
         mFragments = fragments;
+        mTitles = titles;
+
+        mDraws = new int[]{
+                R.mipmap.ic_tain_bule1,
+                R.mipmap.ic_move1,
+                R.mipmap.ic_happy1
+        };
+
     }
 
     @Override
@@ -29,5 +45,11 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public Fragment getItem(int position) {
         return mFragments.get(position);
+    }
+
+    @Override
+    public CharSequence getPageTitle(int position) {
+
+        return mTitles[position];
     }
 }

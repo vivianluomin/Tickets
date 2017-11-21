@@ -21,9 +21,9 @@ public class MainActivity extends BaseActivity {
 
     private ViewPager mViewPager;
     private TabLayout mTabLayout;
-    private TabItem mTrain;
-    private TabItem mMovie;
-    private TabItem mHappy;
+    private TabLayout.Tab mTrain;
+    private TabLayout.Tab mMovie;
+    private TabLayout.Tab mHappy;
     private ViewPagerAdapter mViewPagerAdapter;
     private List<Fragment> mFragments;
 
@@ -37,19 +37,22 @@ public class MainActivity extends BaseActivity {
     private void  init(){
         mViewPager = (ViewPager)findViewById(R.id.vp_viewpager);
         mTabLayout = (TabLayout)findViewById(R.id.tabLayout);
-        mTrain = (TabItem)findViewById(R.id.tb_train);
-        mMovie = (TabItem)findViewById(R.id.tb_move);
-        mHappy = (TabItem)findViewById(R.id.tb_happy);
+        mTrain =mTabLayout.getTabAt(2);
+        mMovie = mTabLayout.getTabAt(1);
+        mHappy = mTabLayout.getTabAt(0);
         mFragments = new ArrayList<>();
         mFragments.add(new TrainTicketFragment());
         mFragments.add(new MovieTicketFragment());
         mFragments.add(new HappyFragment());
-        mViewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(),mFragments);
+        mViewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager()
+                ,mFragments,new String[]{getString(R.string.train),getString(R.string.move),getString(R.string.happy)});
         mViewPager.setAdapter(mViewPagerAdapter);
-
+        mViewPager.setCurrentItem(0);
 
         mTabLayout.setupWithViewPager(mViewPager);
-        mTabLayout.setSelected(true);
+        mTrain.setText(getString(R.string.train)).setIcon(R.mipmap.ic_tain_bule1);
+        mMovie.setText(getString(R.string.move)).setIcon(R.mipmap.ic_move1);
+        mHappy.setText(getString(R.string.happy)).setIcon(R.mipmap.ic_happy1);
         mTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -57,12 +60,15 @@ public class MainActivity extends BaseActivity {
                     case 0:
                         tab.setIcon(R.mipmap.ic_tain_bule1);
 
+                        mViewPager.setCurrentItem(0);
                         break;
                     case 1:
                         tab.setIcon(R.mipmap.ic_move_bule1);
+                        mViewPager.setCurrentItem(1);
                         break;
                     case 2:
                         tab.setIcon(R.mipmap.ic_happy_bule1);
+                        mViewPager.setCurrentItem(2);
                         break;
                 }
             }

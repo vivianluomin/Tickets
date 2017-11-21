@@ -18,7 +18,7 @@
         android:right="2dp"
         >
         <shape android:shape="rectangle">
-           <solid android:color="@color/color_whiet"/>
+           <solid android:color="@color/bg"/>
 
         </shape>
 
