@@ -1,8 +1,10 @@
 package com.example.asus1.trainticket.Fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +21,19 @@ public class ViewPagerFragment extends Fragment {
 
     private ImageView mImageView;
 
+
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -28,9 +43,7 @@ public class ViewPagerFragment extends Fragment {
         return view;
     }
 
-    public  void setData(String url){
-        Glide.with(getContext())
-                .load(url)
-                .into(mImageView);
+    public void setData(){
+        mImageView.setImageResource(R.mipmap.ic_launcher_round);
     }
 }

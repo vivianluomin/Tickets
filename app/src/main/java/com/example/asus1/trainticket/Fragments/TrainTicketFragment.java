@@ -42,6 +42,8 @@ public class TrainTicketFragment extends Fragment {
         mHeadImage = (ImageView)view.findViewById(R.id.iv_head_bg);
         Glide.with(getContext())
                 .load(Constants.TARIN_BG)
+                .placeholder(R.drawable.view_loading)
+                .error(R.mipmap.bg_failed)
                 .into(mHeadImage);
     }
 

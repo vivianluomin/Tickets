@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import com.example.asus1.trainticket.Adapter.ViewPagerAdapter;
@@ -35,6 +36,7 @@ public class MainActivity extends BaseActivity {
     }
 
     private void  init(){
+        Log.d("aaaaaaa","aaaaaaaa");
         mViewPager = (ViewPager)findViewById(R.id.vp_viewpager);
         mTabLayout = (TabLayout)findViewById(R.id.tabLayout);
         mTrain =mTabLayout.getTabAt(2);

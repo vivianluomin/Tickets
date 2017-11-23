@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.text.Spanned;
+import android.util.Log;
 
 import com.example.asus1.trainticket.R;
 
@@ -37,7 +38,9 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
+        Log.d("position",String.valueOf(position));
         return mFragments.get(position);
+
     }
 
     @Override
