@@ -11,4 +11,5 @@
     <color name="half_transparent">#55000000</color>
     <color name="bg">#f2f2f2</color>
     <color name="color_gray">#C0C0C0</color>
+    <color name="color_yellow">#f4ea2a</color>
 </resources>

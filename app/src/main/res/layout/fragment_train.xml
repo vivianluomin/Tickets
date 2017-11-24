@@ -29,7 +29,7 @@
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:id="@+id/tv_weather"
+                android:id="@+id/iv_weather"
                 android:src="@mipmap/ic_sun"
                 android:scaleType="centerCrop"
                 android:layout_marginLeft="20dp"
@@ -62,7 +62,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
                     android:textColor="@color/color_whiet"
-                    android:id="@+id/tv_earar"
+                    android:id="@+id/tv_arear"
                     android:text="长安区  空气良好"
                     />
 
@@ -102,7 +102,7 @@
                 android:src="@mipmap/ic_starts_large" />
 
             <EditText
-                android:id="@+id/tv_start_station"
+                android:id="@+id/et_start_station"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingTop="10dp"
@@ -131,7 +131,7 @@
             android:layout_alignParentEnd="true"
             >
         <EditText
-            android:id="@+id/tv_end_station"
+            android:id="@+id/et_end_station"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingTop="10dp"
@@ -163,6 +163,7 @@
        <EditText
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
+           android:id="@+id/et_start_time"
            android:background="@null"
            android:hint="@string/input_time"
            android:textSize="14sp"

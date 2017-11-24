@@ -22,5 +22,7 @@ public class BaseActivity extends AppCompatActivity {
            window.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
+
+
     }
 }

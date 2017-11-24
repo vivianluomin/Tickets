@@ -3,6 +3,13 @@
     package="com.example.asus1.trainticket">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -11,7 +18,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.MainActivity">
+        <activity android:name=".activities.MainActivity"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,6 +28,16 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.BaseActivity"></activity>
+
+        <meta-data android:name="com.baidu.lbsapi.API_KEY"
+            android:value="F0e0x08Lgr1qG0m28lavhTpqQIFZgzGM"
+            >
+        </meta-data>
+
+        <service android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote"
+             />
     </application>
 
 </manifest>

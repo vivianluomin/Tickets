@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="10dp"
+    >
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <ImageView
+
+        android:layout_width="80dp"
+        android:layout_height="100dp"
+        android:scaleType="centerCrop"
+        android:id="@+id/iv_movie_image"
+        android:layout_marginLeft="16dp"
+        android:src="@mipmap/bg_failed"
+        />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginLeft="10dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_movie_title"
+            android:textColor="@color/text_color"
+            android:textSize="18sp"
+            android:text="追捕"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RatingBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/rb_rating"
+                style="?android:attr/ratingBarStyleSmall"
+                android:minHeight="20dp"
+                android:maxHeight="20dp"
+                android:rating="2.1"
+                android:stepSize="0.1"
+                android:isIndicator="true"
+                android:progress="10"
+                android:progressDrawable="@drawable/view_rating"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/tv_rating"
+                android:textSize="12sp"
+                android:textColor="@color/text_hint"
+                android:text="2.1"
+                android:gravity="center"
+                android:paddingLeft="10dp"
+                />
+
+        </LinearLayout>
+
+
+        <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_directors"
+        android:textSize="12sp"
+        android:textColor="@color/text_hint"
+        android:text="导演：xxxxx"
+        />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_actors"
+            android:textSize="12sp"
+            android:layout_marginTop="3dp"
+            android:textColor="@color/text_hint"
+            android:text="演员：xxxxxxx"
+            />
+
+    </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
