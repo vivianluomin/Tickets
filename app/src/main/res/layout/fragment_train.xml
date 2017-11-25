@@ -44,26 +44,16 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/tv_time"
-                    android:textSize="24sp"
-                    android:text="18:19"
-                    android:textColor="@color/color_whiet"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:id="@+id/tv_weather_data"
                     android:textSize="18sp"
-                    android:textColor="@color/color_whiet"
-                    android:text="周六  阴天  7℃"
+                    android:textColor="@color/weather_color"
                     />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
-                    android:textColor="@color/color_whiet"
+                    android:textColor="@color/weather_color"
                     android:id="@+id/tv_arear"
-                    android:text="长安区  空气良好"
                     />
 
             </LinearLayout>
@@ -161,12 +151,14 @@
             />
 
        <EditText
-           android:layout_width="wrap_content"
+           android:layout_width="match_parent"
            android:layout_height="wrap_content"
            android:id="@+id/et_start_time"
            android:background="@null"
            android:hint="@string/input_time"
            android:textSize="14sp"
+           android:cursorVisible="false"
+           android:focusable="false"
            android:textColorHint="@color/text_hint"
            android:textColor="@color/text_color"
            android:layout_marginLeft="15dp"

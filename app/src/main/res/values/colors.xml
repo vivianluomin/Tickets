@@ -8,8 +8,10 @@
     <color name="color_whiet">#fff</color>
     <color name="text_color">#333</color>
     <color name="text_hint">#757575</color>
-    <color name="half_transparent">#55000000</color>
+    <color name="half_transparent">#b0ffffff</color>
+    <color name="half_transprant_gray">#55000000</color>
     <color name="bg">#f2f2f2</color>
     <color name="color_gray">#C0C0C0</color>
     <color name="color_yellow">#f4ea2a</color>
+    <color name="weather_color">#36648B</color>
 </resources>

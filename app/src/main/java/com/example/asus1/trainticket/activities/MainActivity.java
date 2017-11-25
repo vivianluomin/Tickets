@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.example.asus1.trainticket.Adapter.ViewPagerAdapter;
+import com.example.asus1.trainticket.ContentUtill.SystemManager;
 import com.example.asus1.trainticket.Fragments.HappyFragment;
 import com.example.asus1.trainticket.Fragments.MovieTicketFragment;
 import com.example.asus1.trainticket.Fragments.TrainTicketFragment;
@@ -32,6 +33,7 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        SystemManager.Context = this;
         init();
     }
 
