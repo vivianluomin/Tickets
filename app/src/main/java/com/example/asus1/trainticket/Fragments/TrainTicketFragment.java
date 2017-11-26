@@ -2,6 +2,7 @@ package com.example.asus1.trainticket.Fragments;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.LocationManager;
 import android.os.Bundle;
@@ -31,14 +32,20 @@ import com.example.asus1.trainticket.Moduls.Weather;
 import com.example.asus1.trainticket.Moduls.Weather6;
 import com.example.asus1.trainticket.Moduls.Weather_basic;
 import com.example.asus1.trainticket.R;
+import com.example.asus1.trainticket.Utils.FileUtil;
 import com.example.asus1.trainticket.Utils.HttpUtils;
 import com.example.asus1.trainticket.Utils.KeyBoradUtil;
 import com.example.asus1.trainticket.Utils.NetWorkUtil;
 import com.example.asus1.trainticket.Views.Calendar_Dialog;
+import com.example.asus1.trainticket.activities.TrainStationActivity;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -63,7 +70,6 @@ public class TrainTicketFragment extends Fragment implements BDLocationListener,
     private EditText mEndStation;
     private EditText mGoTime;
     private TextView mSearch;
-    private CheckedTextView mStudent;
     private LocationClient mLocationClient;
     private String mCity;
     private String mDistrict;
@@ -79,7 +85,7 @@ public class TrainTicketFragment extends Fragment implements BDLocationListener,
         option.setIsNeedAddress(true);
         option.setOpenGps(true);
         option.setAddrType("all");
-        option.setScanSpan(5000);
+        option.setScanSpan(50000);
         option.setLocationMode(LocationClientOption.LocationMode.Hight_Accuracy);
         mLocationClient.setLocOption(option);
         super.onCreate(savedInstanceState);
@@ -119,11 +125,25 @@ public class TrainTicketFragment extends Fragment implements BDLocationListener,
             }
         });
         mSearch = (TextView) view.findViewById(R.id.tv_train_search);
-        mStudent = (CheckedTextView) view.findViewById(R.id.ctv_check);
-        mStudent.setOnClickListener(new View.OnClickListener() {
+        mSearch.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                ((CheckedTextView)view).toggle();
+            public void onClick(View v) {
+                String StartCity = mStartStation.getText().toString();
+                String endCity = mEndStation.getText().toString();
+                String time  = mGoTime.getText().toString();
+
+                String[] codes = FileUtil.getCodes(getActivity(),StartCity,endCity);
+                String url = Constants.TRAIN_URL
+                        +Constants.Train_Time+time
+                        +Constants.Train_StartCityCode+codes[0]
+                        +Constants.Train_StartCityName+StartCity
+                        +Constants.Train_EndCityCode+codes[1]
+                        +Constants.Train_EdnCityNmae+endCity
+                        +Constants.Train_endParam;
+
+                Intent intent = new Intent(getContext(), TrainStationActivity.class);
+                intent.putExtra("url",url);
+                startActivity(intent);
 
             }
         });
@@ -239,6 +259,8 @@ public class TrainTicketFragment extends Fragment implements BDLocationListener,
     public void getSelectedData(String date) {
         mGoTime.setText(date);
     }
+
+
 
     HttpUtils.CallBackLinstener WeatherCallback = new HttpUtils.CallBackLinstener() {
         @Override

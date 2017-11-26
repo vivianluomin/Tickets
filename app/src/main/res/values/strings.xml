@@ -10,5 +10,8 @@
     <string name="student">学生</string>
     <string name="movie_bg">https://api.douban.com/v2/movie/subject/%1$s/photos</string>
     <string name="cannotLocation">无法获取当前位置</string>
+    <string name="erro_property">配置文件错误</string>
     <string name="sheshidu">℃</string>
+    <string name="beforeday">前一天</string>
+    <string name="afterday">后一天</string>
 </resources>

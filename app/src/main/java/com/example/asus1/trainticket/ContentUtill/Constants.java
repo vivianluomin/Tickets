@@ -22,6 +22,16 @@ public class Constants {
 
     public static String Params = "&key="+Weather_KEY+"&location=";
 
+    public static String TRAIN_URL = "http://huoche.tuniu.com/yii.php?r=train/trainTicket/getTickets";
+    public static String Train_Time ="&primary%5BdepartureDate%5D=";
+    public static String Train_StartCityCode = "&primary%5BdepartureCityCode%5D=";
+    public static String Train_StartCityName = "&primary%5BdepartureCityName%5D=";
+    public static String Train_EndCityCode = "&primary%5BarrivalCityCode%5D=";
+    public static String Train_EdnCityNmae = "&primary%5BarrivalCityName%5D=";
+    public static String Train_endParam = "&start=0&limit=0";
+
+
+
 
 
 }
