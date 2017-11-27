@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    >
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_marginLeft="10dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:id="@+id/tv_startTime"
+            android:textSize="20sp"
+            android:textColor="@color/text_color"
+            android:text="02:17"
+            android:gravity="top"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:id="@+id/tv_endTime"
+            android:textSize="12sp"
+            android:textColor="@color/text_hint"
+            android:text="14:26"
+            android:gravity="top"
+
+            />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="@color/text_hint"
+                android:text="@string/yingzuo"
+                android:layout_marginRight="5dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_yingzuo"
+                android:textSize="12sp"
+                android:textColor="@color/color_red"
+                android:text="有"
+                />
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        >
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <View
+                android:layout_width="2dp"
+                android:layout_height="4dp"
+                android:layout_marginTop="3dp"
+                android:background="@color/half_bule"
+               android:layout_centerHorizontal="true"
+                />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="15dp"
+                android:id="@+id/iv_from"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/ic_nofromend"
+                android:layout_centerHorizontal="true"
+                />
+
+            <View
+                android:layout_width="2dp"
+                android:layout_height="16dp"
+                android:background="@color/half_bule"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/iv_from"
+                android:id="@+id/view_line_center"
+                />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="15dp"
+                android:id="@+id/iv_to"
+                android:scaleType="fitXY"
+                android:src="@mipmap/ic_nofromend"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/view_line_center"
+                />
+
+        </RelativeLayout>
+
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        >
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        >
+
+    </LinearLayout>
+
+
+</LinearLayout>

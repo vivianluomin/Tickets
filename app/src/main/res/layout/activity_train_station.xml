@@ -10,7 +10,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="110dp"
         android:paddingTop="15dp"
         android:background="@color/mian_bule"
 
@@ -26,7 +26,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:id="@+id/iv_back"
-                android:src="@mipmap/ic_back"
+                android:src="@mipmap/ic_back1"
                 android:scaleType="center"
                 />
             <LinearLayout
@@ -68,21 +68,12 @@
         </RelativeLayout>
 
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_below="@id/rl"
-            android:layout_marginBottom="5dp"
             >
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:id="@+id/iv_beforeDay"
-            android:src="@mipmap/ic_back"
-            android:scaleType="center"
-
-            />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -90,12 +81,18 @@
             android:textColor="@color/color_whiet"
             android:text="@string/beforeday"
             android:layout_gravity="bottom"
+            android:drawableLeft="@mipmap/ic_beforeday"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="15dp"
             />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:background="@color/color_whiet"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="10dp"
                 >
 
                 <TextView
@@ -129,25 +126,40 @@
             </LinearLayout>
 
 
+
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
+                android:id="@+id/tv_afterday"
+                android:layout_alignParentEnd="true"
                 android:textColor="@color/color_whiet"
                 android:text="@string/afterday"
                 android:layout_gravity="bottom"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dp"
+                android:drawableRight="@mipmap/ic_afterdayy"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="10dp"
                 />
-            <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:id="@+id/iv_afterDay"
-            android:src="@mipmap/ic_back"
-            android:scaleType="center" />
 
 
-        </LinearLayout>
+        </RelativeLayout>
 
 
     </RelativeLayout>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:id="@+id/rv_recyclerview"
+        >
+
+
+    </android.support.v7.widget.RecyclerView>
+
 
 </LinearLayout>
