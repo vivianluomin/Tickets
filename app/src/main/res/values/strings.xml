@@ -15,4 +15,9 @@
     <string name="beforeday">前一天</string>
     <string name="afterday">后一天</string>
     <string name="yingzuo">硬座: </string>
+    <string name="wuzuo">无座</string>
+    <string name="yingwo">硬卧</string>
+    <string name="yidengzuo">一等座</string>
+    <string name="erdengzuo">二等座</string>
+    <string name="shangwuzuo">商务座</string>
 </resources>

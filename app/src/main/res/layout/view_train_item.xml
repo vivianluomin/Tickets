@@ -44,15 +44,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="12sp"
+                android:id="@+id/tv_seet1"
                 android:textColor="@color/text_hint"
-                android:text="@string/yingzuo"
+                android:text="@string/wuzuo"
                 android:layout_marginRight="5dp"
                 />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/tv_yingzuo"
+                android:id="@+id/tv_wuzyo"
                 android:textSize="12sp"
                 android:textColor="@color/color_red"
                 android:text="有"
@@ -68,52 +69,97 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
 
         <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            >
+
 
             <View
-                android:layout_width="2dp"
+                android:id="@+id/view_topline"
+                android:layout_width="3dp"
                 android:layout_height="4dp"
+                android:layout_marginLeft="3dp"
                 android:layout_marginTop="3dp"
-                android:background="@color/half_bule"
-               android:layout_centerHorizontal="true"
-                />
+                android:background="@color/half_bule" />
 
             <ImageView
-                android:layout_width="20dp"
-                android:layout_height="15dp"
                 android:id="@+id/iv_from"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/view_topline"
                 android:scaleType="centerCrop"
-                android:src="@mipmap/ic_nofromend"
-                android:layout_centerHorizontal="true"
-                />
+                android:src="@drawable/view_arrvie" />
+
 
             <View
-                android:layout_width="2dp"
-                android:layout_height="16dp"
-                android:background="@color/half_bule"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@id/iv_from"
                 android:id="@+id/view_line_center"
-                />
+                android:layout_width="3dp"
+                android:layout_height="16dp"
+                android:layout_below="@id/iv_from"
+                android:layout_marginLeft="3dp"
+                android:background="@color/half_bule" />
 
             <ImageView
-                android:layout_width="20dp"
-                android:layout_height="15dp"
                 android:id="@+id/iv_to"
-                android:scaleType="fitXY"
-                android:src="@mipmap/ic_nofromend"
-                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_below="@id/view_line_center"
-                />
+                android:scaleType="fitXY"
+                android:src="@drawable/view_notarrive" />
+
+            <TextView
+                android:id="@+id/tv_startStation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:layout_toRightOf="@id/iv_from"
+                android:text="西安"
+                android:textColor="@color/text_color"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_endStation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_startStation"
+                android:layout_marginLeft="3dp"
+                android:layout_marginTop="6dp"
+                android:layout_toEndOf="@id/iv_to"
+                android:text="厦门"
+                android:textColor="@color/text_hint"
+                android:textSize="14sp" />
+
 
         </RelativeLayout>
 
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:id="@+id/tv_seet2"
+                android:text="@string/yingzuo"
+                android:textColor="@color/text_hint"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_yingzuo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="有"
+                android:textColor="@color/color_red"
+                android:textSize="12sp" />
+
+        </LinearLayout>
 
 
     </LinearLayout>
@@ -122,7 +168,53 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
+        android:orientation="vertical"
         >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:id="@+id/tv_banci"
+            android:textColor="@color/text_color"
+            android:textSize="14sp"
+            android:text="Z152"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:id="@+id/tv_train_duration"
+            android:textColor="@color/text_color"
+            android:textSize="14sp"
+            android:text="12时9分"
+            />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:id="@+id/tv_seet3"
+                android:text="@string/yingwo"
+                android:textColor="@color/text_hint"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_yingwo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="有"
+                android:textColor="@color/color_red"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+
 
     </LinearLayout>
 
@@ -130,7 +222,47 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
+        android:orientation="vertical"
         >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:id="@+id/tv_train_price"
+            android:textColor="@color/color_red"
+            android:textColorHighlight="16sp"
+            android:gravity="center"
+            android:drawableLeft="@mipmap/ic_money"
+            android:text="148.5起"
+
+
+            />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:text="@string/yingzuo"
+                android:id="@+id/tv_seet4"
+                android:textColor="@color/text_hint"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_ruanwo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="有"
+                android:textColor="@color/color_red"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
 
     </LinearLayout>
 
