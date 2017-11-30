@@ -2,6 +2,7 @@ package com.example.asus1.trainticket.Views;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -79,8 +80,8 @@ public class View_train_item extends RelativeLayout {
 
         mStartTime.setText(data.getmStartTime());
         mEndTime.setText(data.getmEndTime());
-        mStartStation.setText(data.getmStartStation());
-        mEndStation.setText(data.getmEndStation());
+        mStartStation.setText(data.getmFromStartStation());
+        mEndStation.setText(data.getmFromEndStation());
         mDuration.setText(data.getmDuration());
         List<TrainPriceModul> priceModuls = data.getmPrices();
         setSeat(priceModuls);
@@ -97,7 +98,7 @@ public class View_train_item extends RelativeLayout {
             case 1:
                 modul = priceModuls.get(0);
                 mSeet1.setText(modul.getmSeatName());
-                mWuzuo.setText(modul.getmLeftNum());
+                mWuzuo.setText(""+modul.getmLeftNum());
                 mSeet1.setVisibility(VISIBLE);
                 mWuzuo.setVisibility(VISIBLE);
                 mPrice.setText(String.valueOf(modul.getmPrice()));
@@ -105,10 +106,10 @@ public class View_train_item extends RelativeLayout {
             case 2:
                 modul = priceModuls.get(0);
                 mSeet1.setText(modul.getmSeatName());
-                mWuzuo.setText(modul.getmLeftNum());
+                mWuzuo.setText(""+modul.getmLeftNum());
                 modu2 = priceModuls.get(1);
                 mSeet2.setText(modu2.getmSeatName());
-                mYingzuo.setText(modu2.getmLeftNum());
+                mYingzuo.setText(""+modu2.getmLeftNum());
                 mSeet1.setVisibility(VISIBLE);
                 mWuzuo.setVisibility(VISIBLE);
                 mSeet2.setVisibility(VISIBLE);
@@ -118,13 +119,13 @@ public class View_train_item extends RelativeLayout {
             case 3:
                 modul = priceModuls.get(0);
                 mSeet1.setText(modul.getmSeatName());
-                mWuzuo.setText(modul.getmLeftNum());
+                mWuzuo.setText(""+modul.getmLeftNum());
                 modu2 = priceModuls.get(1);
                 mSeet2.setText(modu2.getmSeatName());
-                mYingzuo.setText(modu2.getmLeftNum());
+                mYingzuo.setText(""+modu2.getmLeftNum());
                 modu3 = priceModuls.get(2);
                 mSeet3.setText(modu3.getmSeatName());
-                mYingwo.setText(modu3.getmLeftNum());
+                mYingwo.setText(""+modu3.getmLeftNum());
                 mSeet1.setVisibility(VISIBLE);
                 mWuzuo.setVisibility(VISIBLE);
                 mSeet2.setVisibility(VISIBLE);
@@ -135,18 +136,6 @@ public class View_train_item extends RelativeLayout {
                 break;
 
             case 4:
-                modul = priceModuls.get(0);
-                mSeet1.setText(modul.getmSeatName());
-                mWuzuo.setText(modul.getmLeftNum());
-                modu2 = priceModuls.get(1);
-                mSeet2.setText(modu2.getmSeatName());
-                mYingzuo.setText(modu2.getmLeftNum());
-                modu3 = priceModuls.get(2);
-                mSeet3.setText(modu3.getmSeatName());
-                mYingwo.setText(modu3.getmLeftNum());
-                modu4 = priceModuls.get(3);
-                mSeet4.setText(modu4.getmSeatName());
-                mRuanwo.setText(modu4.getmLeftNum());
                 mSeet1.setVisibility(VISIBLE);
                 mWuzuo.setVisibility(VISIBLE);
                 mSeet2.setVisibility(VISIBLE);
@@ -155,6 +144,19 @@ public class View_train_item extends RelativeLayout {
                 mYingwo.setVisibility(VISIBLE);
                 mSeet4.setVisibility(VISIBLE);
                 mRuanwo.setVisibility(VISIBLE);
+                modul = priceModuls.get(0);
+                mSeet1.setText(modul.getmSeatName());
+                Log.d("aaaaa",String.valueOf(modul.getmLeftNum()));
+                mWuzuo.setText(""+modul.getmLeftNum());
+                modu2 = priceModuls.get(1);
+                mSeet2.setText(modu2.getmSeatName());
+                mYingzuo.setText(""+modu2.getmLeftNum());
+                modu3 = priceModuls.get(2);
+                mSeet3.setText(modu3.getmSeatName());
+                mYingwo.setText(""+modu3.getmLeftNum());
+                modu4 = priceModuls.get(3);
+                mSeet4.setText(modu4.getmSeatName());
+                mRuanwo.setText(""+modu4.getmLeftNum());
                 mPrice.setText(String.valueOf(modul.getmPrice()));
                 break;
         }

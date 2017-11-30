@@ -38,7 +38,7 @@ public class TrainlList_modul {
     private String mEndStation;
 
     @SerializedName("durationStr")
-    private int mDuration;
+    private String mDuration;
 
     public String getmTrainNum() {
         return mTrainNum;
@@ -76,7 +76,7 @@ public class TrainlList_modul {
         return mEndStation;
     }
 
-    public int getmDuration() {
+    public String getmDuration() {
         return mDuration;
     }
 }

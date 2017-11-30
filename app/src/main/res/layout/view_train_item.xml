@@ -48,6 +48,7 @@
                 android:textColor="@color/text_hint"
                 android:text="@string/wuzuo"
                 android:layout_marginRight="5dp"
+                android:visibility="gone"
                 />
 
             <TextView
@@ -57,6 +58,7 @@
                 android:textSize="12sp"
                 android:textColor="@color/color_red"
                 android:text="有"
+                android:visibility="gone"
                 />
 
         </LinearLayout>
@@ -143,19 +145,21 @@
             android:layout_marginTop="5dp">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/tv_seet2"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="5dp"
-                android:id="@+id/tv_seet2"
                 android:text="@string/yingzuo"
                 android:textColor="@color/text_hint"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/tv_yingzuo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="有"
+                android:visibility="gone"
                 android:textColor="@color/color_red"
                 android:textSize="12sp" />
 
@@ -202,6 +206,7 @@
                 android:id="@+id/tv_seet3"
                 android:text="@string/yingwo"
                 android:textColor="@color/text_hint"
+                android:visibility="gone"
                 android:textSize="12sp" />
 
             <TextView
@@ -210,6 +215,7 @@
                 android:layout_height="wrap_content"
                 android:text="有"
                 android:textColor="@color/color_red"
+                android:visibility="gone"
                 android:textSize="12sp" />
 
         </LinearLayout>
@@ -231,7 +237,7 @@
             android:layout_weight="1"
             android:id="@+id/tv_train_price"
             android:textColor="@color/color_red"
-            android:textColorHighlight="16sp"
+            android:textSize="16sp"
             android:gravity="center"
             android:drawableLeft="@mipmap/ic_money"
             android:text="148.5起"
@@ -251,6 +257,7 @@
                 android:text="@string/yingzuo"
                 android:id="@+id/tv_seet4"
                 android:textColor="@color/text_hint"
+                android:visibility="gone"
                 android:textSize="12sp" />
 
             <TextView
@@ -258,6 +265,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="有"
+                android:visibility="gone"
                 android:textColor="@color/color_red"
                 android:textSize="12sp" />
 
