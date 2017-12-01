@@ -56,7 +56,7 @@ public class View_train_item extends RelativeLayout {
 
     private void init(){
 
-        View view =LayoutInflater.from(mContext).inflate(R.layout.view_train_item,this,false);
+        View view =View.inflate(mContext,R.layout.view_train_item,this);
 
         mStartTime = (TextView)view.findViewById(R.id.tv_startTime);
         mEndTime = (TextView)view.findViewById(R.id.tv_endTime);
@@ -82,7 +82,7 @@ public class View_train_item extends RelativeLayout {
         mEndTime.setText(data.getmEndTime());
         mStartStation.setText(data.getmFromStartStation());
         mEndStation.setText(data.getmFromEndStation());
-        mDuration.setText(data.getmDuration());
+        mDuration.setText(data.getmDuration().split("钟")[0]);
         List<TrainPriceModul> priceModuls = data.getmPrices();
         setSeat(priceModuls);
 

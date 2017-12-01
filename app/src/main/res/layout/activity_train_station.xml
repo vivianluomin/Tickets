@@ -78,6 +78,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="14sp"
+            android:id="@+id/tv_before"
             android:textColor="@color/color_whiet"
             android:text="@string/beforeday"
             android:layout_gravity="bottom"
@@ -105,7 +106,7 @@
                     android:layout_marginLeft="10dp"
                     android:text="2014-07-03"/>
 
-                <VideoView
+                <View
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
                     android:background="@color/mian_bule"
@@ -121,6 +122,7 @@
                     android:layout_gravity="center"
                     android:src="@mipmap/ic_calendar"
                     android:layout_marginRight="10dp"
+                    android:id="@+id/iv_calendar"
 
                     />
             </LinearLayout>
@@ -156,6 +158,8 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:id="@+id/rv_recyclerview"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         >
 
 
