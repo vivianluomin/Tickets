@@ -143,6 +143,9 @@ public class TrainTicketFragment extends Fragment implements BDLocationListener,
 
                 Intent intent = new Intent(getContext(), TrainStationActivity.class);
                 intent.putExtra("url",url);
+                intent.putExtra("time",mGoTime.getText().toString());
+                intent.putExtra("startStation",StartCity);
+                intent.putExtra("endStation",endCity);
                 startActivity(intent);
 
             }

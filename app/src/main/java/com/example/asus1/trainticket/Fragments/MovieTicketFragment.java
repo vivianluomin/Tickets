@@ -16,11 +16,16 @@ import android.widget.RelativeLayout;
 
 import com.example.asus1.trainticket.Adapter.MovieApdater;
 import com.example.asus1.trainticket.Adapter.ViewPagerAdapter;
+import com.example.asus1.trainticket.Moduls.Movie_subject;
 import com.example.asus1.trainticket.R;
+import com.example.asus1.trainticket.Utils.HttpUtils;
 import com.example.asus1.trainticket.Views.ViewpagerRuns;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import okhttp3.Call;
+import okhttp3.Response;
 
 /**
  * Created by asus1 on 2017/11/18.
@@ -31,6 +36,7 @@ public class MovieTicketFragment extends Fragment  {
     private RecyclerView mRelative;
     private MovieApdater mAdapter;
     private FragmentManager mFm;
+    private List<Movie_subject> mSubjects = new ArrayList<>();
 
 
     @Override
@@ -48,12 +54,30 @@ public class MovieTicketFragment extends Fragment  {
 
     private void init(View view){
         mRelative = (RecyclerView) view.findViewById(R.id.rv_recyclerview);
-        mAdapter = new MovieApdater(getContext(),getChildFragmentManager());
+        mAdapter = new MovieApdater(getContext(),mSubjects,getChildFragmentManager());
         mFm = getFragmentManager();
         mRelative.setLayoutManager(new LinearLayoutManager(getContext()));
         mRelative.setAdapter(mAdapter);
+        requestData();
 
     }
+
+    private void requestData(){
+
+    }
+
+
+    HttpUtils.CallBackLinstener callBack = new HttpUtils.CallBackLinstener() {
+        @Override
+        public void onFailure(Call call) {
+
+        }
+
+        @Override
+        public void onResponse(Call call, Response response) {
+
+        }
+    };
 
 
 

@@ -129,6 +129,7 @@
             android:background="@null"
             android:textCursorDrawable="@null"
             android:textColorHint="@color/text_hint"
+            android:gravity="end"
             android:textSize="14sp" />
 
         <ImageView
