@@ -27,6 +27,7 @@ public class MovieApdater extends RecyclerView.Adapter {
     private List<Movie_subject> mSubjects;
     private final  int mHEAD = 0;
     private final  int mITEM = 1;
+    private HeadHolder headHolder;
 
     public MovieApdater(Context context, List<Movie_subject> subjects, FragmentManager fm) {
         mContext = context;
@@ -59,13 +60,22 @@ public class MovieApdater extends RecyclerView.Adapter {
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
 
         if(position == 0){
+
+            headHolder = (HeadHolder)holder;
+        }else if(position == 1){
             int[] ids = new int[4];
             for(int i = 0;i<mSubjects.size()&&i<4;i++){
                 ids[i] = mSubjects.get(i).getId();
 
             }
-            ((HeadHolder)(holder)).setData(ids);
-        }else{
+            if(headHolder!=null){
+                headHolder.setData(ids);
+            }
+
+
+        }
+
+        if(position!=0&&position<mSubjects.size()){
 
             ((ItemHolder)holder).setData(mSubjects.get(position));
         }

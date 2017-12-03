@@ -8,9 +8,6 @@ import com.google.gson.annotations.SerializedName;
 
 public class Movie_director {
 
-    @SerializedName("avatars")
-    private String[] mAvatars;
-
     @SerializedName("name_en")
     private String mName_en;
 
@@ -23,9 +20,6 @@ public class Movie_director {
     @SerializedName("id")
     private int id;
 
-    public String[] getmAvatars() {
-        return mAvatars;
-    }
 
     public String getmName_en() {
         return mName_en;

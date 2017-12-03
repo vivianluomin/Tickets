@@ -21,5 +21,6 @@ public class HeadHolder extends RecyclerView.ViewHolder {
 
     public void setData(int[] ids){
 
+        mRuns.setData(ids);
     }
 }

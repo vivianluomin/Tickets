@@ -56,11 +56,11 @@ public class View_Movie_item extends RelativeLayout {
     }
 
     public void setData(Movie_subject subject){
-        mRating.setRating(subject.getmRatings().get(0).getmAverage());
+        mRating.setRating(subject.getmRatings().getmAverage());
         mTitle.setText(subject.getmTitle());
         mDration.setText(subject.getmDuration()[0]);
         Glide.with(mContext)
-                .load(subject.getmImages()[0])
+                .load(subject.getmImages().getmSmall())
                 .placeholder(R.mipmap.bg_failed)
                 .error(R.mipmap.bg_failed)
                 .into(mMovieImage);
@@ -80,6 +80,9 @@ public class View_Movie_item extends RelativeLayout {
             di+="  ";
 
         }
+
+        mDirectors.setText("导演："+di);
+        mActors.setText("演员:"+ac);
 
     }
 }

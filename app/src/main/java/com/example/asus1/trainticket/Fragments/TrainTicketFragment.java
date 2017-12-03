@@ -182,7 +182,7 @@ public class TrainTicketFragment extends Fragment implements BDLocationListener,
                 for (int i = 0; i < grantResults.length; i++) {
                     if (grantResults[i] != PackageManager.PERMISSION_GRANTED) {
                         Toast.makeText(getContext(), "你拒绝了定位", Toast.LENGTH_SHORT).show();
-                        return;
+                        getPermission();
                     }
                 }
                 setData();

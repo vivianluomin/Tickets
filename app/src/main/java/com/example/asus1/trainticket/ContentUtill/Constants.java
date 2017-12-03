@@ -10,6 +10,8 @@ public class Constants {
     public  static  String Movie_Now
             = "https://api.douban.com/v2/movie/in_theaters?apikey=0b2bdeda43b5688921839c8ecb20399b&city=%E5%8C%97%E4%BA%AC&start=0&count=100&client=&udid=";
 
+    public static String Movie_BG = "https://api.douban.com/v2/movie/subject/";
+    public static String Movie_BG_Param = "/photos?apikey=0b2bdeda43b5688921839c8ecb20399b&start=0&count=1&client=something&udid=dddddddddddddddddddddd";
 
     public static String Weather_ICON = "https://cdn.heweather.com/cond_icon/";
 

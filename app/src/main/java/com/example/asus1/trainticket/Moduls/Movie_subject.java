@@ -11,7 +11,7 @@ import java.util.List;
 public class Movie_subject {
 
     @SerializedName("rating")
-    private List<Movie_Rating> mRatings;
+    private Movie_Rating mRatings;
 
     @SerializedName("genres")
     private String[] mGenres;
@@ -22,8 +22,8 @@ public class Movie_subject {
     @SerializedName("casts")
    private List<Movie_casts> mCasts;
 
-    @SerializedName("duration")
-    private int[] mDuration;
+    @SerializedName("durations")
+    private String[] mDuration;
 
     @SerializedName("directors")
     private List<Movie_director> mDirectors;
@@ -32,7 +32,7 @@ public class Movie_subject {
     private int mYear;
 
     @SerializedName("images")
-    private String[] mImages;
+    private Movie_Images mImages;
 
     @SerializedName("alt")
     private String mAlt;
@@ -40,7 +40,7 @@ public class Movie_subject {
     @SerializedName("id")
     private int id;
 
-    public List<Movie_Rating> getmRatings() {
+    public Movie_Rating getmRatings() {
         return mRatings;
     }
 
@@ -56,7 +56,7 @@ public class Movie_subject {
         return mCasts;
     }
 
-    public int[] getmDuration() {
+    public String[] getmDuration() {
         return mDuration;
     }
 
@@ -68,7 +68,7 @@ public class Movie_subject {
         return mYear;
     }
 
-    public String[] getmImages() {
+    public Movie_Images getmImages() {
         return mImages;
     }
 

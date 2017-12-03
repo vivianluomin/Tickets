@@ -16,11 +16,15 @@ import android.widget.RelativeLayout;
 
 import com.example.asus1.trainticket.Adapter.MovieApdater;
 import com.example.asus1.trainticket.Adapter.ViewPagerAdapter;
+import com.example.asus1.trainticket.ContentUtill.Constants;
 import com.example.asus1.trainticket.Moduls.Movie_subject;
+import com.example.asus1.trainticket.Moduls.Moview_Data;
 import com.example.asus1.trainticket.R;
 import com.example.asus1.trainticket.Utils.HttpUtils;
 import com.example.asus1.trainticket.Views.ViewpagerRuns;
+import com.google.gson.Gson;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -64,6 +68,8 @@ public class MovieTicketFragment extends Fragment  {
 
     private void requestData(){
 
+        HttpUtils.Request(Constants.Movie_Now,callBack);
+
     }
 
 
@@ -75,6 +81,24 @@ public class MovieTicketFragment extends Fragment  {
 
         @Override
         public void onResponse(Call call, Response response) {
+
+            try {
+                Gson gson = new Gson();
+                Moview_Data data = gson.fromJson(response.body().string(),Moview_Data.class);
+                List<Movie_subject> subjects = data.getmSubjects();
+                mSubjects.clear();
+                mSubjects.addAll(subjects);
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        mAdapter.notifyDataSetChanged();
+                    }
+                });
+
+            }catch (IOException e){
+                e.printStackTrace();
+            }
+
 
         }
     };

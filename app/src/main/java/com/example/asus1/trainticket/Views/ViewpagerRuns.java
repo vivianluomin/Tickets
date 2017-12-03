@@ -36,6 +36,7 @@ public class ViewpagerRuns extends RelativeLayout implements ViewPager.OnPageCha
     private List<Fragment> mFragments;
     private List<View> mDians;
     private FragmentManager mFm;
+    private int[] mIds = null;
 
     public ViewpagerRuns(Context context,FragmentManager fm) {
         super(context);
@@ -97,8 +98,24 @@ public class ViewpagerRuns extends RelativeLayout implements ViewPager.OnPageCha
           }else {
               mDians.get(i).setBackgroundResource(R.mipmap.ic_dian_whiet);
           }
+
       }
+      if(mIds!=null&&mIds.length>0){
+          ((ViewPagerFragment) mFragments.get(position)).setData(mIds[position]);
+      }
+
+
     }
+
+    public void setData(int[] ids){
+        mIds = ids;
+        for(int i = 0;i<ids.length;i++){
+
+            ((ViewPagerFragment) mFragments.get(i)).setData(ids[i]);
+        }
+    }
+
+
 
 
 }

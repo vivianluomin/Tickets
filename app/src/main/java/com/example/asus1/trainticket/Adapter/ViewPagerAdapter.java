@@ -10,6 +10,7 @@ import android.support.v4.view.PagerAdapter;
 import android.text.Spanned;
 import android.util.Log;
 
+import com.example.asus1.trainticket.Fragments.ViewPagerFragment;
 import com.example.asus1.trainticket.R;
 
 import java.util.List;
