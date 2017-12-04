@@ -20,4 +20,11 @@
     <string name="yidengzuo">一等座</string>
     <string name="erdengzuo">二等座</string>
     <string name="shangwuzuo">商务座</string>
+    <string name="douban">豆瓣评分</string>
+    <string name="jianjie">简介:</string>
+    <string name="actors">影人：</string>
+    <string name="juzhao">预告片/剧照</string>
+    <string name="shortcomment">短评</string>
+    <string name="moviecomment">影评</string>
+
 </resources>

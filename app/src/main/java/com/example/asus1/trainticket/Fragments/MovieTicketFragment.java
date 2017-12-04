@@ -1,30 +1,29 @@
 package com.example.asus1.trainticket.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 
 import com.example.asus1.trainticket.Adapter.MovieApdater;
-import com.example.asus1.trainticket.Adapter.ViewPagerAdapter;
+import com.example.asus1.trainticket.activities.Movie_Details_Activity;
 import com.example.asus1.trainticket.ContentUtill.Constants;
 import com.example.asus1.trainticket.Moduls.Movie_subject;
 import com.example.asus1.trainticket.Moduls.Moview_Data;
 import com.example.asus1.trainticket.R;
 import com.example.asus1.trainticket.Utils.HttpUtils;
-import com.example.asus1.trainticket.Views.ViewpagerRuns;
+import com.example.asus1.trainticket.Views.View_Movie_item;
 import com.google.gson.Gson;
 
 import java.io.IOException;
+import java.security.acl.LastOwnerException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,7 +34,7 @@ import okhttp3.Response;
  * Created by asus1 on 2017/11/18.
  */
 
-public class MovieTicketFragment extends Fragment  {
+public class MovieTicketFragment extends Fragment implements View_Movie_item.RecyclerViewItemListener {
 
     private RecyclerView mRelative;
     private MovieApdater mAdapter;
@@ -59,9 +58,11 @@ public class MovieTicketFragment extends Fragment  {
     private void init(View view){
         mRelative = (RecyclerView) view.findViewById(R.id.rv_recyclerview);
         mAdapter = new MovieApdater(getContext(),mSubjects,getChildFragmentManager());
+        mAdapter.setLintenser(this);
         mFm = getFragmentManager();
         mRelative.setLayoutManager(new LinearLayoutManager(getContext()));
         mRelative.setAdapter(mAdapter);
+
         requestData();
 
     }
@@ -72,6 +73,14 @@ public class MovieTicketFragment extends Fragment  {
 
     }
 
+    @Override
+    public void onItemClick(int position) {
+        String url = Constants.Movie_detail+mSubjects.get(position).getId()+Constants.Movie_deatail_Param;
+        Log.d("id",String.valueOf(mSubjects.get(position).getId()));
+        Intent intent = new Intent(getContext(), Movie_Details_Activity.class);
+        intent.putExtra("url",url);
+        startActivity(intent);
+    }
 
     HttpUtils.CallBackLinstener callBack = new HttpUtils.CallBackLinstener() {
         @Override

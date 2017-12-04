@@ -27,6 +27,7 @@ public class View_Movie_item extends RelativeLayout {
     private TextView mTitle;
     private TextView mDration;
     private RatingBar mRating;
+    private TextView mRatingText;
     private TextView mDirectors;
     private TextView mActors;
 
@@ -52,13 +53,18 @@ public class View_Movie_item extends RelativeLayout {
         mRating = (RatingBar)view.findViewById(R.id.rb_rating);
         mDirectors = (TextView)view.findViewById(R.id.tv_directors);
         mActors = (TextView)view.findViewById(R.id.tv_actors);
+        mRatingText = (TextView)view.findViewById(R.id.tv_rating);
 
     }
 
     public void setData(Movie_subject subject){
-        mRating.setRating(subject.getmRatings().getmAverage());
+        mRating.setRating(subject.getmRatings().getmAverage()/2);
+        mRatingText.setText(String.valueOf(subject.getmRatings().getmAverage()));
         mTitle.setText(subject.getmTitle());
-        mDration.setText(subject.getmDuration()[0]);
+        if(subject.getmDuration().length>0){
+            mDration.setText(subject.getmDuration()[0]);
+        }
+
         Glide.with(mContext)
                 .load(subject.getmImages().getmSmall())
                 .placeholder(R.mipmap.bg_failed)
@@ -84,5 +90,9 @@ public class View_Movie_item extends RelativeLayout {
         mDirectors.setText("导演："+di);
         mActors.setText("演员:"+ac);
 
+    }
+
+    public interface RecyclerViewItemListener{
+        void onItemClick(int position);
     }
 }

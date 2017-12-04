@@ -31,14 +31,15 @@
 
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="F0e0x08Lgr1qG0m28lavhTpqQIFZgzGM"></meta-data>
+            android:value="F0e0x08Lgr1qG0m28lavhTpqQIFZgzGM" />
 
         <service
             android:name="com.baidu.location.f"
             android:enabled="true"
             android:process=":remote" />
 
-        <activity android:name=".activities.TrainStationActivity"></activity>
+        <activity android:name=".activities.TrainStationActivity" />
+        <activity android:name=".activities.Movie_Details_Activity"></activity>
     </application>
 
 </manifest>

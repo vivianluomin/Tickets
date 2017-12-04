@@ -13,7 +13,7 @@ import java.util.List;
  */
 
 public class ItemHolder extends RecyclerView.ViewHolder {
-    private View_Movie_item mView;
+    public View_Movie_item mView;
     public ItemHolder(View itemView) {
 
         super(itemView);

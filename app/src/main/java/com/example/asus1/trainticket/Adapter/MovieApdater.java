@@ -3,6 +3,7 @@ package com.example.asus1.trainticket.Adapter;
 import android.content.Context;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
@@ -19,7 +20,7 @@ import java.util.List;
  * Created by asus1 on 2017/11/23.
  */
 
-public class MovieApdater extends RecyclerView.Adapter {
+public class MovieApdater extends RecyclerView.Adapter implements View.OnClickListener{
 
 
     private Context mContext;
@@ -28,6 +29,7 @@ public class MovieApdater extends RecyclerView.Adapter {
     private final  int mHEAD = 0;
     private final  int mITEM = 1;
     private HeadHolder headHolder;
+    private View_Movie_item.RecyclerViewItemListener mRecyclerViewListener = null;
 
     public MovieApdater(Context context, List<Movie_subject> subjects, FragmentManager fm) {
         mContext = context;
@@ -52,7 +54,11 @@ public class MovieApdater extends RecyclerView.Adapter {
         }
 
 
-        return  new ItemHolder(new View_Movie_item(mContext));
+        View_Movie_item item =  new View_Movie_item(mContext);
+        item.setOnClickListener(this);
+        ItemHolder itemHolder = new ItemHolder(item);
+
+        return  itemHolder;
 
     }
 
@@ -75,11 +81,26 @@ public class MovieApdater extends RecyclerView.Adapter {
 
         }
 
-        if(position!=0&&position<mSubjects.size()){
+        if(position!=0){
 
-            ((ItemHolder)holder).setData(mSubjects.get(position));
+
+            ((ItemHolder)holder).setData(mSubjects.get(position-1));
+            ((ItemHolder)holder).mView.setTag(position-1);
+
         }
 
+    }
+
+    public void setLintenser(View_Movie_item.RecyclerViewItemListener lintenser){
+        mRecyclerViewListener = lintenser;
+    }
+
+    @Override
+    public void onClick(View v) {
+
+        if(mRecyclerViewListener!=null){
+            mRecyclerViewListener.onItemClick((int)v.getTag());
+        }
     }
 
     @Override
