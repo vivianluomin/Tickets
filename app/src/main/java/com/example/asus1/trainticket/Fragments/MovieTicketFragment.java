@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.asus1.trainticket.Adapter.MovieApdater;
+import com.example.asus1.trainticket.Views.Loadind_Dialog;
 import com.example.asus1.trainticket.activities.Movie_Details_Activity;
 import com.example.asus1.trainticket.ContentUtill.Constants;
 import com.example.asus1.trainticket.Moduls.Movie_subject;
@@ -40,6 +41,7 @@ public class MovieTicketFragment extends Fragment implements View_Movie_item.Rec
     private MovieApdater mAdapter;
     private FragmentManager mFm;
     private List<Movie_subject> mSubjects = new ArrayList<>();
+    private  Loadind_Dialog mDialog;
 
 
     @Override
@@ -68,6 +70,8 @@ public class MovieTicketFragment extends Fragment implements View_Movie_item.Rec
     }
 
     private void requestData(){
+        mDialog = new Loadind_Dialog(getContext());
+        mDialog.show();
 
         HttpUtils.Request(Constants.Movie_Now,callBack);
 
@@ -103,6 +107,7 @@ public class MovieTicketFragment extends Fragment implements View_Movie_item.Rec
                         mAdapter.notifyDataSetChanged();
                     }
                 });
+                mDialog.dismiss();
 
             }catch (IOException e){
                 e.printStackTrace();
