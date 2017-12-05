@@ -3,22 +3,21 @@ package com.example.asus1.trainticket.Moduls;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Created by asus1 on 2017/12/3.
+ * Created by asus1 on 2017/12/5.
  */
 
-public class Movie_Images {
+public class MovieDatil_WritersAvatars {
 
     @SerializedName("small")
     private String mSmall;
-
-    @SerializedName("large")
-    private String mLarge;
+    @SerializedName("medium")
+    private String mMedium;
 
     public String getmSmall() {
         return mSmall;
     }
 
-    public String getmLarge() {
-        return mLarge;
+    public String getmMedium() {
+        return mMedium;
     }
 }

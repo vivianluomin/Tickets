@@ -7,8 +7,6 @@
     <string name="end_station">请输入终点站</string>
     <string name="input_time">请输入出发时间</string>
     <string name="search">搜索</string>
-    <string name="student">学生</string>
-    <string name="movie_bg">https://api.douban.com/v2/movie/subject/%1$s/photos</string>
     <string name="cannotLocation">无法获取当前位置</string>
     <string name="erro_property">配置文件错误</string>
     <string name="sheshidu">℃</string>
@@ -17,14 +15,12 @@
     <string name="yingzuo">硬座: </string>
     <string name="wuzuo">无座</string>
     <string name="yingwo">硬卧</string>
-    <string name="yidengzuo">一等座</string>
-    <string name="erdengzuo">二等座</string>
-    <string name="shangwuzuo">商务座</string>
     <string name="douban">豆瓣评分</string>
     <string name="jianjie">简介:</string>
     <string name="actors">影人：</string>
     <string name="juzhao">预告片/剧照</string>
     <string name="shortcomment">短评</string>
     <string name="moviecomment">影评</string>
+    <string name="director">导演</string>
 
 </resources>

@@ -39,14 +39,12 @@
         <android.support.design.widget.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/tb_train"
             android:text="@string/train"
             android:icon="@mipmap/ic_train2"
             />
         <android.support.design.widget.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/tb_move"
             android:text="@string/move"
             android:icon="@mipmap/ic_move1"
             />
@@ -54,7 +52,6 @@
         <android.support.design.widget.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/tb_happy"
             android:text="@string/happy"
             android:icon="@mipmap/ic_happy1"
             />

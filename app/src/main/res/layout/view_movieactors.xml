@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginLeft="15dp"
+    >
+
+    <ImageView
+        android:layout_width="70dp"
+        android:layout_height="90dp"
+        android:id="@+id/iv_photo"
+        android:scaleType="centerCrop"
+        />
+
+    <TextView
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_name"
+        android:layout_marginTop="5dp"
+        android:textSize="12sp"
+        android:textColor="@color/text_color"
+        android:text="安东尼。钢砂，dscnvdf"
+        />
+
+    <TextView
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_director"
+        android:textSize="12sp"
+        android:textColor="@color/text_hint"
+        android:text="@string/director"
+        android:gravity="center"
+        android:layout_marginTop="5dp"
+        android:visibility="gone"
+        />
+
+
+
+</LinearLayout>
