@@ -18,7 +18,7 @@ public class MoviePhotoHolder extends RecyclerView.ViewHolder {
         view = (View_MoviePhoto) itemView;
     }
 
-    public void setData(String url,int tag){
-        view.setData(url,tag);
+    public void setData(String url,String resource,int tag){
+        view.setData(url,resource,tag);
     }
 }

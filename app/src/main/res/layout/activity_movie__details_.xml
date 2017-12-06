@@ -8,12 +8,12 @@
     tools:context="com.example.asus1.trainticket.activities.Movie_Details_Activity">
 
     <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:background="@color/mian_bule"
         android:id="@+id/actionbar"
+        android:layout_width="match_parent"
+        android:layout_height="298dp"
+        android:background="@color/mian_bule"
         android:paddingTop="24dp"
-        >
+        tools:layout_editor_absoluteY="2dp">
 
         <android.support.design.widget.CollapsingToolbarLayout
             android:layout_width="match_parent"
@@ -227,6 +227,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/rv_recyclerview_photo"
+                android:layout_marginTop="20dp"
                 >
 
 
@@ -252,6 +253,24 @@
             </android.support.v7.widget.RecyclerView>
 
             <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_AllShortComments"
+                android:textColor="@color/mian_bule"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:layout_marginTop="20dp"
+                android:text="@string/seeAllShort"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/text_hint"
+                android:layout_marginTop="15dp"
+                />
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="12sp"
@@ -269,6 +288,23 @@
 
             </android.support.v7.widget.RecyclerView>
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_AllComments"
+                android:textColor="@color/mian_bule"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:layout_marginTop="20dp"
+                android:text="@string/seeAllComments"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/text_hint"
+                android:layout_marginTop="15dp"
+                />
 
         </LinearLayout>
 

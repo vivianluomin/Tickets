@@ -11,7 +11,7 @@ public class Movie_popularComments {
     @SerializedName("rating")
     private MovieDatilPopularComments_Rating mRating;
 
-    @SuppressWarnings("author")
+    @SerializedName("author")
     private MoviePopularComments_Author mAuthor;
 
     @SerializedName("content")
@@ -22,6 +22,9 @@ public class Movie_popularComments {
 
     @SerializedName("created_at")
     private String mCreatedTime;
+
+    @SerializedName("title")
+    private String mTitle;
 
     @SerializedName("id")
     private int id;
@@ -48,5 +51,9 @@ public class Movie_popularComments {
 
     public int getId() {
         return id;
+    }
+
+    public String getmTitle() {
+        return mTitle;
     }
 }

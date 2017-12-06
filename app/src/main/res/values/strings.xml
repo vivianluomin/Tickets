@@ -22,5 +22,7 @@
     <string name="shortcomment">短评</string>
     <string name="moviecomment">影评</string>
     <string name="director">导演</string>
+    <string name="seeAllShort">查看全部短评</string>
+    <string name="seeAllComments">查看全部影评</string>
 
 </resources>

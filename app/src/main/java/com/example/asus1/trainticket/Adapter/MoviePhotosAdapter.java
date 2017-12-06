@@ -2,6 +2,7 @@ package com.example.asus1.trainticket.Adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.ViewGroup;
 
 import com.example.asus1.trainticket.Holder.MoviePhotoHolder;
@@ -37,10 +38,11 @@ public class MoviePhotosAdapter extends RecyclerView.Adapter {
 
         MoviePhotoHolder holder1 = (MoviePhotoHolder)holder;
 
+
         if(position<mBloopers.size()){
-            holder1.setData(mBloopers.get(position).getmResource_url(),1);
+            holder1.setData(mBloopers.get(position).getmMedium(),mBloopers.get(position).getmResource_url(),1);
         }else{
-            holder1.setData(mPhotos.get(position-mBloopers.size()).getmCover(),0);
+            holder1.setData(mPhotos.get(position-mBloopers.size()).getmCover(),null,0);
         }
 
     }

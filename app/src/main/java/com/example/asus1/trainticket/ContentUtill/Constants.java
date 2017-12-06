@@ -15,6 +15,8 @@ public class Constants {
     public static String Movie_detail = "http://api.douban.com/v2/movie/subject/";
     public static String Movie_deatail_Param = "?apikey=0b2bdeda43b5688921839c8ecb20399b&city=%E5%8C%97%E4%BA%AC&client=&udid=";
 
+    public static String Movie_ShortComments = "https://api.douban.com/v2/movie/subject/";
+    public static  String Movie_ShortComments_params = "/comments?apikey=0b2bdeda43b5688921839c8ecb20399b&count=20&client=&udid=";
 
     public static String Weather_ICON = "https://cdn.heweather.com/cond_icon/";
 

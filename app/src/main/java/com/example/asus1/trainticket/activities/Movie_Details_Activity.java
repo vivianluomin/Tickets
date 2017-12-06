@@ -20,11 +20,14 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.asus1.trainticket.Adapter.MovieActosAdapter;
+import com.example.asus1.trainticket.Adapter.MovieCommentsApdater;
 import com.example.asus1.trainticket.Adapter.MoviePhotosAdapter;
+import com.example.asus1.trainticket.Adapter.MovieShortCommentsAdapter;
 import com.example.asus1.trainticket.Moduls.MovieWriters_Modul;
 import com.example.asus1.trainticket.Moduls.Movie_DatilsModul;
 import com.example.asus1.trainticket.Moduls.Movie_bloopers;
 import com.example.asus1.trainticket.Moduls.Movie_photo;
+import com.example.asus1.trainticket.Moduls.Movie_popularComments;
 import com.example.asus1.trainticket.R;
 import com.example.asus1.trainticket.Utils.HttpUtils;
 import com.example.asus1.trainticket.Views.Loadind_Dialog;
@@ -64,16 +67,23 @@ public class Movie_Details_Activity extends BaseActivity {
     private RecyclerView mRecyclerActor;
     private RecyclerView mShortComment;
     private RecyclerView mMovieComment;
+    private TextView mSeeAllShort;
+    private TextView mSeeAllComm;
+
+    private int mId;
 
     private MovieActosAdapter mActorAdapter;
     private MoviePhotosAdapter mPhotoAdapter;
+    private MovieShortCommentsAdapter mShortCommentsAdapter;
+    private MovieCommentsApdater mMoiveCommentsAdapter;
 
-    private Palette mPalet;
 
     private List<MovieWriters_Modul> mActors = new ArrayList<>();
     private List<MovieWriters_Modul> mDirectors = new ArrayList<>();
     private List<Movie_bloopers> mMovie_bloopers = new ArrayList<>();
     private List<Movie_photo> mPhotos = new ArrayList<>();
+    private List<Movie_popularComments> mShortComments = new ArrayList<>();
+    private List<Movie_popularComments> mMovieCommnts = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,9 +126,25 @@ public class Movie_Details_Activity extends BaseActivity {
         mPhotoAdapter = new MoviePhotosAdapter(this,mPhotos,mMovie_bloopers);
         mRecyclerPhoto.setAdapter(mPhotoAdapter);
 
-
         mShortComment = (RecyclerView)findViewById(R.id.rv_recyclerview_shortcomment);
+        mShortCommentsAdapter = new MovieShortCommentsAdapter(this,mShortComments);
+        mShortComment.setLayoutManager(new LinearLayoutManager(this));
+        mShortComment.setAdapter(mShortCommentsAdapter);
+
         mMovieComment = (RecyclerView)findViewById(R.id.rv_recyclerview_moviecomment);
+        mMoiveCommentsAdapter = new MovieCommentsApdater(this,mMovieCommnts);
+        mMovieComment.setLayoutManager(new LinearLayoutManager(this));
+        mMovieComment.setAdapter(mMoiveCommentsAdapter);
+
+        mSeeAllShort = (TextView)findViewById(R.id.tv_AllShortComments);
+        mSeeAllShort.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Movie_Details_Activity.this,ShortCommentActivity.class);
+                intent.putExtra("id",mId);
+            }
+        });
+
         requestData();
     }
 
@@ -150,6 +176,11 @@ public class Movie_Details_Activity extends BaseActivity {
                     mMovie_bloopers .addAll(modul.getmBloopers());
                     mPhotos.clear();
                     mPhotos.addAll(modul.getmPhotos());
+                    mShortComments.clear();
+                    mShortComments.addAll(modul.getmPopularComments());
+                    mMovieCommnts.clear();
+                    mMovieCommnts.addAll(modul.getmPopular_reviews());
+
                 }
                 setData(modul);
                 mLoding.dismiss();
@@ -199,11 +230,14 @@ public class Movie_Details_Activity extends BaseActivity {
                 mDuration.setText("片长："+modul.getmDurations()[0]);
                 mRatingText.setText(String.valueOf(modul.getmRating().getmAverage()));
                 mRating.setRating(modul.getmRating().getmAverage()/2);
+                mOriginName.setText(modul.getmOriginal_Name());
 
                 mSummary.setText(modul.getmSummary());
 
                 mActorAdapter.notifyDataSetChanged();
                 mPhotoAdapter.notifyDataSetChanged();
+                mShortCommentsAdapter.notifyDataSetChanged();
+                mMoiveCommentsAdapter.notifyDataSetChanged();
 
             }
         });
