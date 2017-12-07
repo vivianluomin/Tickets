@@ -67,7 +67,8 @@
             android:theme="@android:style/Theme.NoTitleBar"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity android:name=".activities.PlayVideoActivity" />
-        <activity android:name=".activities.ShortCommentActivity"></activity>
+        <activity android:name=".activities.CommentActivity" />
+        <activity android:name=".activities.ShowMovieCommentsActivity"></activity>
     </application>
 
 </manifest>

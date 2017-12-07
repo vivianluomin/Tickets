@@ -24,5 +24,7 @@
     <string name="director">导演</string>
     <string name="seeAllShort">查看全部短评</string>
     <string name="seeAllComments">查看全部影评</string>
+    <string name="movieComments">影评</string>
+    <string name="joking">内涵段子</string>
 
 </resources>

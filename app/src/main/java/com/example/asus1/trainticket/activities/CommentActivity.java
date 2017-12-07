@@ -1,7 +1,6 @@
 package com.example.asus1.trainticket.activities;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -9,8 +8,10 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.asus1.trainticket.Adapter.MovieCommentsApdater;
 import com.example.asus1.trainticket.Adapter.MovieShortCommentsAdapter;
 import com.example.asus1.trainticket.ContentUtill.Constants;
+import com.example.asus1.trainticket.Moduls.Movie_CommentsAc;
 import com.example.asus1.trainticket.Moduls.Movie_ShortCommentsAc;
 import com.example.asus1.trainticket.Moduls.Movie_popularComments;
 import com.example.asus1.trainticket.R;
@@ -25,16 +26,18 @@ import java.util.List;
 import okhttp3.Call;
 import okhttp3.Response;
 
-public class ShortCommentActivity extends BaseActivity {
+public class CommentActivity extends BaseActivity {
 
     private RecyclerView mRecyclerview;
     private MovieShortCommentsAdapter mAapter;
+    private MovieCommentsApdater mAdaptetReview;
     private List<Movie_popularComments> mComments= new ArrayList<>();
     private TextView mTitle;
     private ImageView mBack;
     private int mId;
     private String title;
     private Loadind_Dialog mLoding;
+    private int mTag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +47,7 @@ public class ShortCommentActivity extends BaseActivity {
         Intent intent = getIntent();
         mId = intent.getIntExtra("id",-1);
         title = intent.getStringExtra("title");
+        mTag = intent.getIntExtra("tag",-1);
         init();
 
     }
@@ -60,9 +64,19 @@ public class ShortCommentActivity extends BaseActivity {
         mTitle = (TextView)findViewById(R.id.tv_title);
         mTitle.setText(title);
         mRecyclerview = (RecyclerView)findViewById(R.id.rv_recyclerview);
-        mAapter = new MovieShortCommentsAdapter(this,mComments);
+        if(mTag == 0){
+            mAapter = new MovieShortCommentsAdapter(this,mComments);
+        }else if(mTag == 1){
+            mAdaptetReview = new MovieCommentsApdater(this,mComments);
+        }
         mRecyclerview.setLayoutManager(new LinearLayoutManager(this));
-        mRecyclerview.setAdapter(mAapter);
+        if(mAapter !=null){
+            mRecyclerview.setAdapter(mAapter);
+        }
+
+        if(mAdaptetReview!=null){
+            mRecyclerview.setAdapter(mAdaptetReview);
+        }
         mLoding = new Loadind_Dialog(this);
         RequestData();
     }
@@ -71,8 +85,16 @@ public class ShortCommentActivity extends BaseActivity {
 
         if(mId!=-1){
             mLoding.show();
-            String url = Constants.Movie_ShortComments+mId+Constants.Movie_ShortComments_params;
-            HttpUtils.Request(url,callback);
+            String url="";
+            if(mTag == 0){
+                 url = Constants.Movie_ShortComments+mId+Constants.Movie_ShortComments_params;
+            }else  if(mTag == 1){
+                url = Constants.Movie_Comments+mId+Constants.Movie_Comments_Param;
+            }
+            if(!url.equals("")){
+                HttpUtils.Request(url,callback);
+            }
+
         }
 
     }
@@ -87,16 +109,33 @@ public class ShortCommentActivity extends BaseActivity {
         public void onResponse(Call call, Response response) {
             try {
                 Gson gson = new Gson();
-                Movie_ShortCommentsAc module = gson.fromJson(response.body().string(),Movie_ShortCommentsAc.class);
-                mComments.clear();
-                mComments.addAll(module.getmComments());
+                if(mTag == 0){
+                    Movie_ShortCommentsAc module = gson.fromJson(response.body().string(),Movie_ShortCommentsAc.class);
+                    mComments.clear();
+                    mComments.addAll(module.getmComments());
+                    CommentActivity.this.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            mAapter.notifyDataSetChanged();
+                        }
+                    });
+                }else if(mTag == 1){
+
+                    Movie_CommentsAc module = gson.fromJson(response.body().string(),Movie_CommentsAc.class);
+                    mComments.clear();
+                    mComments.addAll(module.getmComments());
+                    CommentActivity.this.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            mAdaptetReview.notifyDataSetChanged();
+                        }
+                    });
+
+                }
+
+
                 mLoding.dismiss();
-                ShortCommentActivity.this.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        mAapter.notifyDataSetChanged();
-                    }
-                });
+
             }catch (IOException e){
                 e.printStackTrace();
             }

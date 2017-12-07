@@ -1,27 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.asus1.trainticket.activities.CommentActivity">
-
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="74dp"
         android:background="@color/mian_bule"
         android:paddingTop="24dp"
+        android:paddingLeft="20dp"
         >
-
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:id="@+id/iv_back"
-            android:scaleType="center"
-            android:src="@mipmap/ic_back"
-            />
 
         <TextView
             android:layout_width="wrap_content"
@@ -30,11 +21,16 @@
             android:textSize="14sp"
             android:textColor="@color/color_whiet"
             android:layout_gravity="center_vertical"
-            android:text="adcadcadad"
+            android:text="@string/joking"
             />
 
     </LinearLayout>
 
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/refresh"
+        >
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
@@ -44,6 +40,6 @@
 
 
     </android.support.v7.widget.RecyclerView>
-
+</android.support.v4.widget.SwipeRefreshLayout>
 
 </LinearLayout>

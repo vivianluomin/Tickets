@@ -1,6 +1,8 @@
 package com.example.asus1.trainticket.Views;
 
 import android.content.Context;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -18,6 +20,7 @@ import com.example.asus1.trainticket.R;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 /**
  * Created by asus1 on 2017/11/21.
@@ -37,6 +40,23 @@ public class ViewpagerRuns extends RelativeLayout implements ViewPager.OnPageCha
     private List<View> mDians;
     private FragmentManager mFm;
     private int[] mIds = null;
+    private Handler handler ;
+
+    private boolean isDragging = false;
+    private boolean isStop = false;
+    private boolean isStart = false;
+
+    private int mCurrentItem = 0;
+
+
+    //请求更新显示的View。
+    private static final int MSG_UPDATE = 1;
+    //请求暂停轮播。
+    public static final int MSG_STOP = 2;
+    //请求恢复轮播。
+    public static final int MSG_REGAIN = 3;
+
+
 
     public ViewpagerRuns(Context context,FragmentManager fm) {
         super(context);
@@ -76,6 +96,50 @@ public class ViewpagerRuns extends RelativeLayout implements ViewPager.OnPageCha
         mViewPager.setAdapter(mAdapter);
         mViewPager.setCurrentItem(0);
         mViewPager.setOnPageChangeListener(this);
+        mViewPager.setOffscreenPageLimit(3);
+
+        handler = new Handler() {
+
+            @Override
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+                if(mViewPager == null || handler == null|| mAdapter == null || isDragging){
+                    return;
+                }
+
+                switch (msg.what){
+                    case MSG_UPDATE:
+                        if(isStop || hasMessages(MSG_UPDATE)){
+                            return;
+                        }
+
+                        if(mAdapter.getCount()>1){
+                            mCurrentItem ++;
+                            mCurrentItem %= mAdapter.getCount();
+                            mViewPager.setCurrentItem(mCurrentItem);
+                            sendEmptyMessageDelayed(MSG_UPDATE,3000);
+                        }
+                        break;
+                    case MSG_STOP:
+                        if(hasMessages(MSG_UPDATE)){
+                            removeMessages(MSG_UPDATE);
+                        }
+
+                        isStop = true;
+                        break;
+
+                    case MSG_REGAIN:
+                        if(hasMessages(MSG_UPDATE)){
+                            removeMessages(MSG_UPDATE);
+                        }
+                        sendEmptyMessageDelayed(MSG_UPDATE,3000);
+                        isStop = false;
+                        break;
+
+                }
+
+            }
+        };
 
     }
 
@@ -87,7 +151,18 @@ public class ViewpagerRuns extends RelativeLayout implements ViewPager.OnPageCha
 
     @Override
     public void onPageScrollStateChanged(int state) {
+        if(state == ViewPager.SCROLL_STATE_DRAGGING){
+            isDragging = true;
+        }else if(state == ViewPager.SCROLL_STATE_IDLE){
 
+            mCurrentItem = mViewPager.getCurrentItem();
+            if(isDragging&&handler!=null){
+                handler.sendEmptyMessageDelayed(MSG_UPDATE,3000);
+            }
+
+            isDragging = false;
+
+        }
     }
 
     @Override
@@ -107,12 +182,18 @@ public class ViewpagerRuns extends RelativeLayout implements ViewPager.OnPageCha
 
     }
 
+
+
+
+
     public void setData(int[] ids){
         mIds = ids;
         for(int i = 0;i<ids.length;i++){
 
             ((ViewPagerFragment) mFragments.get(i)).setData(ids[i]);
         }
+
+        handler.sendEmptyMessageDelayed(MSG_UPDATE,3000);
     }
 
 

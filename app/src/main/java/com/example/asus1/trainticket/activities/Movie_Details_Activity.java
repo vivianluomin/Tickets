@@ -3,16 +3,11 @@ package com.example.asus1.trainticket.activities;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.provider.ContactsContract;
-import android.provider.SyncStateContract;
 import android.support.design.widget.AppBarLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.graphics.Palette;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RatingBar;
@@ -34,11 +29,7 @@ import com.example.asus1.trainticket.Views.Loadind_Dialog;
 import com.google.gson.Gson;
 
 import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -72,6 +63,7 @@ public class Movie_Details_Activity extends BaseActivity {
 
     private int mId;
 
+
     private MovieActosAdapter mActorAdapter;
     private MoviePhotosAdapter mPhotoAdapter;
     private MovieShortCommentsAdapter mShortCommentsAdapter;
@@ -91,6 +83,7 @@ public class Movie_Details_Activity extends BaseActivity {
         setContentView(R.layout.activity_movie__details_);
         Intent intent = getIntent();
         mUrl = intent.getStringExtra("url");
+
 
         init();
     }
@@ -140,8 +133,23 @@ public class Movie_Details_Activity extends BaseActivity {
         mSeeAllShort.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Movie_Details_Activity.this,ShortCommentActivity.class);
+                Intent intent = new Intent(Movie_Details_Activity.this,CommentActivity.class);
                 intent.putExtra("id",mId);
+                intent.putExtra("title",mMovieTitle.getText());
+                intent.putExtra("tag",0);
+                startActivity(intent);
+            }
+        });
+
+        mSeeAllComm = (TextView)findViewById(R.id.tv_AllComments);
+        mSeeAllComm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Movie_Details_Activity.this,CommentActivity.class);
+                intent.putExtra("id",mId);
+                intent.putExtra("title",mMovieTitle.getText());
+                intent.putExtra("tag",1);
+                startActivity(intent);
             }
         });
 
@@ -166,7 +174,8 @@ public class Movie_Details_Activity extends BaseActivity {
             try{
 
                 Gson gson = new Gson();
-                Movie_DatilsModul modul = gson.fromJson(response.body().string(),Movie_DatilsModul.class);
+                String s = response.body().string();
+                Movie_DatilsModul modul = gson.fromJson(s,Movie_DatilsModul.class);
                 if(modul!=null){
                     mDirectors.clear();
                     mDirectors.addAll(modul.getmDirectors());
@@ -195,7 +204,7 @@ public class Movie_Details_Activity extends BaseActivity {
 
     private void setData(final Movie_DatilsModul modul){
         final  Bitmap  bitmap = getBitmap(modul.getmImages().getmLarge());
-
+        mId = modul.getId();
         Movie_Details_Activity.this.runOnUiThread(new Runnable() {
             @Override
             public void run() {

@@ -26,6 +26,9 @@ public class Movie_popularComments {
     @SerializedName("title")
     private String mTitle;
 
+    @SerializedName("share_url")
+    private String mShare_url;
+
     @SerializedName("id")
     private int id;
 
@@ -55,5 +58,9 @@ public class Movie_popularComments {
 
     public String getmTitle() {
         return mTitle;
+    }
+
+    public String getmShare_url() {
+        return mShare_url;
     }
 }

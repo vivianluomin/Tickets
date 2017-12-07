@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.asus1.trainticket.activities.CommentActivity">
+    tools:context="com.example.asus1.trainticket.activities.ShowMovieCommentsActivity">
 
 
     <LinearLayout
@@ -30,20 +30,18 @@
             android:textSize="14sp"
             android:textColor="@color/color_whiet"
             android:layout_gravity="center_vertical"
-            android:text="adcadcadad"
+            android:text="@string/movieComments"
             />
 
     </LinearLayout>
 
 
-    <android.support.v7.widget.RecyclerView
+    <WebView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/rv_recyclerview"
-        >
-
-
-    </android.support.v7.widget.RecyclerView>
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:id="@+id/webview"
+        />
 
 
 </LinearLayout>
