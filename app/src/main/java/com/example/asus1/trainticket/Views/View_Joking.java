@@ -3,6 +3,7 @@ package com.example.asus1.trainticket.Views;
 import android.content.Context;
 import android.text.Spannable;
 import android.text.SpannableString;
+import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.View;
@@ -53,9 +54,11 @@ public class View_Joking extends RelativeLayout {
                     .error(R.mipmap.ic_usericon)
                     .into(mUserIcom);
             mUserName.setText(data.getmUser().getmName());
-            SpannableString string = new SpannableString(data.getmCategory_name());
-            string.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.color_red)),0,data.getmCategory_name().length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-            mComments.setText(string+data.getmContent());
+            SpannableString string = new SpannableString("#"+data.getmCategory_name()+"#"+data.getmContent());
+            string.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.color_red)),0,data.getmCategory_name().length()+2, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            mComments.setText(string);
+            mPubTiem.setVisibility(GONE);
+
         }
 
     }

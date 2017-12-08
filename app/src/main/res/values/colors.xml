@@ -9,4 +9,5 @@
     <color name="weather_color">#36648B</color>
     <color name="color_red">#F44336</color>
     <color name="half_bule">#B2DFEE</color>
+    <color name="color_yellow">#FFD700</color>
 </resources>

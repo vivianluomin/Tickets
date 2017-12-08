@@ -3,6 +3,7 @@ package com.example.asus1.trainticket.Fragments;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -60,12 +61,11 @@ public class HappyFragment extends Fragment {
        mRefresh = (SwipeRefreshLayout)view.findViewById(R.id.refresh);
        mRefresh.setRefreshing(false);
        mRefresh.setEnabled(false);
-       mRefresh.setColorSchemeColors(getResources().getColor(R.color.color_red),getResources().getColor(R.color.mian_bule), Color.YELLOW);
+       mRefresh.setColorSchemeColors(getResources().getColor(R.color.color_red),getResources().getColor(R.color.mian_bule),getResources().getColor(R.color.color_yellow));
        mRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
            @Override
            public void onRefresh() {
             reqestData();
-            Log.d("aaaa","fffffffff");
            }
        });
 
@@ -80,24 +80,27 @@ public class HappyFragment extends Fragment {
               LinearLayoutManager manager = (LinearLayoutManager) recyclerView.getLayoutManager();
               int fist = manager.findFirstVisibleItemPosition();
               int last = manager.findLastVisibleItemPosition();
-              Log.d("poppp",""+fist+"  "+last+" "+recyclerView.getChildCount()+"  "+mAdapter.getItemCount());
               if(!isFirt&&fist == 0){
                   isGetMore = false;
                   isFresh = true;
                   if(!mRefresh.isRefreshing()&&!isFirt){
                       mRefresh.setEnabled(true);
-                      mRefresh.setRefreshing(true);
-                      Log.d("aaaa","fffffffffsssss");
                       isFirt = false;
                   }
               }else  if(last+1 == mAdapter.getItemCount()) {
                   isGetMore = true;
                   isFresh = false;
-                  Log.d("fff", "" + mRefresh.isRefreshing() + "   " + isFirt);
                   if (!mRefresh.isRefreshing() && !isFirt) {
                       mRefresh.setEnabled(true);
                       mRefresh.setRefreshing(true);
-                      Log.d("aaaa", "ffffffffflllll");
+                      if(isHasMore){
+                          handler.sendEmptyMessageDelayed(1,1000);
+
+                      }else{
+                          mRefresh.setEnabled(false);
+                          mRefresh.setRefreshing(false);
+                      }
+
                       isFirt = false;
                   }
               }else {
@@ -116,6 +119,12 @@ public class HappyFragment extends Fragment {
         HttpUtils.Request(Constants.Joking,callback);
     }
 
+    private Handler handler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            reqestData();
+        }
+    };
 
     private HttpUtils.CallBackLinstener callback = new HttpUtils.CallBackLinstener() {
         @Override
@@ -128,8 +137,6 @@ public class HappyFragment extends Fragment {
             try {
                 Gson gson = new Gson();
                 JokingModle modle = gson.fromJson(response.body().string(),JokingModle.class);
-                mRefresh.setRefreshing(false);
-
                 JokingData data = modle.getData();
                 List<JokingData.JokingDatadata> groups = data.getData();
                 isHasMore = data.isHas_more();

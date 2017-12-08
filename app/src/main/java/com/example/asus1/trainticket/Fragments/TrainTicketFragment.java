@@ -11,6 +11,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -102,11 +103,6 @@ public class TrainTicketFragment extends Fragment implements BDLocationListener,
 
     private void init(View view) {
         mHeadImage = (ImageView) view.findViewById(R.id.iv_head_bg);
-        Glide.with(getContext())
-                .load(Constants.TARIN_BG)
-                .placeholder(R.drawable.view_loading)
-                .error(R.mipmap.bg_failed)
-                .into(mHeadImage);
 
         mWeatherImage = (ImageView) view.findViewById(R.id.iv_weather);
         mWeatherDate = (TextView) view.findViewById(R.id.tv_weather_data);
@@ -133,23 +129,29 @@ public class TrainTicketFragment extends Fragment implements BDLocationListener,
                 String time  = mGoTime.getText().toString();
 
                 String[] codes = FileUtil.getCodes(getActivity(),StartCity,endCity);
-                String url = Constants.TRAIN_URL
-                        +Constants.Train_Time+time
-                        +Constants.Train_StartCityCode+codes[0]
-                        +Constants.Train_StartCityName+StartCity
-                        +Constants.Train_EndCityCode+codes[1]
-                        +Constants.Train_EdnCityNmae+endCity
-                        +Constants.Train_endParam;
+                if(codes[0]!=null&&codes[1]!=null&&time!=null&&!time.equals("")){
+                    String url = Constants.TRAIN_URL
+                            +Constants.Train_Time+time
+                            +Constants.Train_StartCityCode+codes[0]
+                            +Constants.Train_StartCityName+StartCity
+                            +Constants.Train_EndCityCode+codes[1]
+                            +Constants.Train_EdnCityNmae+endCity
+                            +Constants.Train_endParam;
 
-                Intent intent = new Intent(getContext(), TrainStationActivity.class);
-                intent.putExtra("url",url);
-                intent.putExtra("time",mGoTime.getText().toString());
-                intent.putExtra("startStation",StartCity);
-                intent.putExtra("endStation",endCity);
-                startActivity(intent);
+                    Intent intent = new Intent(getContext(), TrainStationActivity.class);
+                    intent.putExtra("url",url);
+                    intent.putExtra("time",mGoTime.getText().toString());
+                    intent.putExtra("startStation",StartCity);
+                    intent.putExtra("endStation",endCity);
+                    startActivity(intent);
+                }else {
+                    Toast.makeText(getContext(),"请输入正确的城市或时间",Toast.LENGTH_SHORT).show();
+                }
+
 
             }
         });
+        HttpUtils.Request(Constants.TARIN_BG,bingyingCallback);
         getPermission();
     }
 
@@ -220,6 +222,7 @@ public class TrainTicketFragment extends Fragment implements BDLocationListener,
                 mLocationClient.stop();
             } else {
                 Toast.makeText(getContext(), getString(R.string.cannotLocation) + bdLocation.getCity(), Toast.LENGTH_SHORT).show();
+                getPermission();
                 return;
             }
 
@@ -265,6 +268,35 @@ public class TrainTicketFragment extends Fragment implements BDLocationListener,
     }
 
 
+    HttpUtils.CallBackLinstener bingyingCallback = new HttpUtils.CallBackLinstener() {
+        @Override
+        public void onFailure(Call call) {
+
+        }
+
+        @Override
+        public void onResponse(Call call, final Response response) {
+
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            String s = response.body().string();
+                        Glide.with(getContext())
+                                .load(s)
+                                .placeholder(R.drawable.view_loading)
+                                .error(R.mipmap.bg_failed)
+                                .into(mHeadImage);
+                        }catch (IOException e){
+                            e.printStackTrace();
+                        }
+
+                    }
+                });
+
+
+        }
+    };
 
     HttpUtils.CallBackLinstener WeatherCallback = new HttpUtils.CallBackLinstener() {
         @Override

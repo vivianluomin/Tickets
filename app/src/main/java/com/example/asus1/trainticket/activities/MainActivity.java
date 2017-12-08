@@ -38,8 +38,8 @@ public class MainActivity extends BaseActivity {
     }
 
     private void  init(){
-        Log.d("aaaaaaa","aaaaaaaa");
         mViewPager = (ViewPager)findViewById(R.id.vp_viewpager);
+        mViewPager.setOffscreenPageLimit(3);
         mTabLayout = (TabLayout)findViewById(R.id.tabLayout);
         mTrain =mTabLayout.getTabAt(2);
         mMovie = mTabLayout.getTabAt(1);
